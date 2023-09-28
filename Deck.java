@@ -18,7 +18,7 @@ public class Deck
     {
         cards = new ArrayList<Card>();
     }
-    
+
     public void initializeNewDeck() {
         String[] suits = {"Hearts","Clubs","Spades","Diamonds"};
         int[] ranks = {2,3,4,5,6,7,8,9,10,11,12,13,14};
@@ -39,14 +39,26 @@ public class Deck
     public int getDeckSize() {
         return cards.size();
     }
-    
+
     /**
      * Shuffles the cards in the deck
      */
     public void shuffle() {
         // To be written
+        //might change this... very inefficient
+        List<Card> shuffledDeck = new ArrayList<Card>();
+        for (int i = 0; i < cards.size(); i++) {
+            shuffledDeck.add(cards.get(0));
+        }
+        
+        for (int c = 0; c<cards.size(); c++) {
+            int randomIndex = (int)(Math.random() * c);
+            shuffledDeck.add(randomIndex, cards.get(c));
+            shuffledDeck.remove(randomIndex+1);
+        }
+        cards = shuffledDeck;
     }
-    
+
     /**
      * Deal all the cards in the deck to make two new decks of cards
      * 
@@ -63,22 +75,25 @@ public class Deck
         }
         return halves;
     }
-    
+
     /**
      * Deal the top card of the deck and remove it from the deck
      * @returns The top card of the deck (at cards index 0)
      */
     public Card dealCardFromDeck() {
         // To be written 
-        return null;
+        Card topCard = cards.get(0);
+        cards.remove(0);
+        return topCard;
     }
-    
+
     /**
      * Adds the provided card to the deck
      * @param cardToAdd: Card to add to this deck
      */
     public void addCardToDeck(Card cardToAdd) {
         // To be written
+        cards.add(cardToAdd);
     }
-    
+
 }
