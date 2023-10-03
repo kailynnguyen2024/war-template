@@ -21,21 +21,34 @@ public class War
         Deck[] playerDecks = mainDeck.dealDeck();
         Deck cpuDeck = playerDecks[0];
         Deck player1Deck = playerDecks[1];
-        
-        while (cpuDeck.getDeckSize() > 0 && player1Deck.getDeckSize() > 0) {
-            
-        }
+        Deck mainPile = new Deck();
         
         // ...then run the event loop
-        this.runEventLoop();
+        while (cpuDeck.getDeckSize() > 0 && player1Deck.getDeckSize() > 0) {
+            this.runEventLoop(cpuDeck, player1Deck, mainPile);
+        }
     }
     
     /**
      * This is the game's event loop. The code in here should come
      * from the War flowchart you created for this game
      */
-    public void runEventLoop() {
+    public void runEventLoop(Deck cpuDeck, Deck player1Deck, Deck mainPile) {
+        //Adds cpu's card to main pile for comparing
+        Card playerTopCard = player1Deck.dealCardFromDeck();
+        mainPile.addCardToDeck(playerTopCard);
         
+        //Adds player 1's card to the main pile for comparing
+        Card cpuTopCard = player1Deck.dealCardFromDeck();
+        mainPile.addCardToDeck(cpuTopCard);
+        
+        //checks if a war should start
+        if (playerTopCard.getRank() == cpuTopCard.getRank()) {
+            
+        }
+        
+        //compares cards in the instance that there isn't a war
+        if 
     }
     
     /**
